@@ -1,0 +1,1 @@
+import { loadImage } from "canvas";
