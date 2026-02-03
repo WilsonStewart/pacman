@@ -15,58 +15,33 @@ button {
 
 button {
   background-color: royalblue;
-  width: 50px;
-  height: 30px;
 }
-
+/* 
 .sprite {
+  width: auto;
+  height: auto;
+}
+
+#pacman svg {
   position: absolute;
-  width: var(--pacman-size);
-  height: var(--pacman-size);
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  outline: 1px solid blue;
-  animation: pacman var(--duration) steps(1) infinite;
+  animation: pacman-chomp var(--pacman-chomp-animation-duration) steps(1)
+    infinite;
 }
 
-.sprite[data-frame="1"] {
-  animation-delay: calc(0 * var(--duration) / var(--frames));
+#pacman svg[data-frame="1"] {
+  animation-delay: 0ms;
 }
 
-.sprite[data-frame="2"] {
-  animation-delay: calc(1 * var(--duration) / var(--frames));
-}
-
-.sprite-container {
-  /* width: 256px;
-  height: 256px;
-  left: 20px;
-  top: 20px;
-  position: absolute;
-  /* background-color: red; */
-  background-color: red;
-}
-
-.pixel {
-  /* outline: 1px solid red; */
-}
-
-.pixel-yellow {
-  background-color: yellow;
-}
-
-.pixel-transparent {
-  background-color: transparent;
+#pacman svg[data-frame="2"] {
+  animation-delay: calc(var(--pacman-chomp-animation-duration) / 2);
 }
 
 :root {
-  --frames: 2;
-  --duration: 500ms;
+  --pacman-chomp-animation-duration: 200ms;
   --pacman-size: 100px;
 }
 
-@keyframes pacman {
+@keyframes pacman-chomp {
   0% {
     opacity: 1;
   }
@@ -81,4 +56,4 @@ button {
   100% {
     opacity: 0;
   }
-}
+} */

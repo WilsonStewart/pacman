@@ -9,27 +9,11 @@
   </head>
   <body>
     <main>
-      <div id="pacman-sprite">
-        <svg
-          id="pacman"
-          width="32"
-          height="32"
-          viewBox="0 0 16 16"
-          shape-rendering="crispEdges"
-          image-rendering="pixelated"
-        ></svg>
-      </div>
-
-      <button onclick="handlePacmanMoveRight()">move</button>
+      <div id="pacman"></div>
+      <button onclick="pacman.openMouth()">open seseme</button>
     </main>
   </body>
 </html>
 <script>
-  drawSprite("pacman-looking-right.png", document.getElementById("pacman"));
-
-  function handlePacmanMoveRight() {
-    let pacman = document.getElementById("pacman");
-    pacman.style.transition = "transform 1s linear";
-    pacman.style.transform = "translateX(256px)";
-  }
+  const pacman = new Pacman(document.getElementById("pacman"));
 </script>
