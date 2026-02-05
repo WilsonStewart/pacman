@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev:frontend": "vite public/"
+    "dev:frontend": "vite public/",
+    "dev:buildDomScripts": "bun build domScripts/* --target browser --outdir public/scripts/ --watch",
+    "buildDomScripts": "bun build domScripts/* --target=browser --minify --format=iife --global-name=GameEngine --outdir public/scripts/"
   },
   "devDependencies": {
     "@types/bun": "latest",

@@ -1,12 +1,35 @@
 // @ts-check
 /// <reference lib="dom" />
 
+/**
+ * @typedef {Object} View
+ * @property {"mirrorH" | "mirrorV"} [mirror]
+ * @property {string[]} frames
+ */
+
+class Entity {
+  /** @type {{ [key: string]: View }} */
+  views = {};
+
+  /** @param {HTMLElement} targetElement */
+  constructor(targetElement) {
+    /** @type {HTMLElement} */
+    this.mainElement = targetElement;
+  }
+
+  /**
+   * @param {string} view
+   */
+  setView(view) {}
+}
+
 class Pacman {
   /**
    * @param {HTMLElement} targetElement
    */
   constructor(targetElement) {
     this.currentSprite = this.sprites.right;
+    this.isChomping = false;
 
     const svgElement = document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -14,8 +37,8 @@ class Pacman {
     );
     svgElement.id = "pacman";
     svgElement.setAttribute("data-frame", "1");
-    svgElement.setAttribute("width", "32");
-    svgElement.setAttribute("height", "32");
+    svgElement.setAttribute("width", "500");
+    svgElement.setAttribute("height", "500");
     svgElement.setAttribute("shape-rendering", "crispEdges");
     svgElement.setAttribute("image-rendering", "pixelated");
 
@@ -41,13 +64,18 @@ class Pacman {
     },
   };
 
-  chomp() {}
+  toggleChomp() {
+    this.isChomping = !this.isChomping;
 
-  toggleChomp() {}
-
-  openMouth() {
-    this.currentSprite = this.sprites.chompRight;
-    this.useElement.setAttribute("href", this.currentSprite.href);
+    if (this.isChomping) {
+      this.chompTimer = setInterval(async () => {
+        let mouthState = 1;
+        console.log(mouthState++);
+        // this.useElement.setAttribute("href");
+      }, 500);
+    } else {
+      clearInterval(this.chompTimer);
+    }
   }
 }
 
